@@ -1,0 +1,11 @@
+<mat-card class="outputCard">
+    <mat-card-content>
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="Country Code" [formControl]="countryCode" required>
+            <input matInput placeholder="Number" [formControl]="preNumber" required>
+            <input matInput placeholder="1548" [formControl]="mainNumber" required>
+            <input matInput placeholder="54" [formControl]="extraNumber" required>
+        </mat-form-field>
+    </mat-card-content>
+    <button mat-button color="accent" (click)="copy()">copy</button>
+</mat-card>
