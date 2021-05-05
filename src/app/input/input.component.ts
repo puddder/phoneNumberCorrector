@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { NumberService } from '../number.service';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  styleUrls: ['./input.component.scss'],
 })
-export class InputComponent{
-  
-  constructor() { }
-  
-  number = new FormControl('', [Validators.required]);
+export class InputComponent {
+  constructor(public numberService: NumberService) {}
 
-  getErrorMessage(){
-    if (this.number.hasError('required')){
-      return 'You must enter a value';
+  number = new FormControl('', [Validators.required]);
+  mobile: boolean;
+
+  getErrorMessage() {
+    if (this.number.hasError('required')) {
+      return 'You have to enter a number';
     }
     return this.number.hasError('number') ? 'Not a valid number' : '';
   }
 
-  formatNumber(){
-    console.log("implement Service for request API to format Number")
+  formatNumber() {
+    this.numberService.goFormatNumber(this.number.value, this.mobile);
   }
 }

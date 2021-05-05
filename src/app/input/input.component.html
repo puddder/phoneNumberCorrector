@@ -4,11 +4,18 @@
         <mat-card-subtitle>enter your Number you want to format</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <mat-form-field appearance="fill">
-            <mat-label>phone Number</mat-label>
-            <input matInput placeholder="+49 7832 - 1548 - 54" [formControl]="number" required>
-            <mat-error *ngIf="number.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
+        <div class="container">
+            <mat-form-field>
+                <input matInput placeholder="+49 7832 1548 - 54" [formControl]="number" required>
+                <mat-error *ngIf="number.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="container">
+            <mat-radio-group name="mobile" [(ngModel)]="mobile">
+                <mat-radio-button value="false" checked='true'>phone</mat-radio-button>
+                <mat-radio-button value="true">mobile</mat-radio-button>
+            </mat-radio-group>
+        </div>
     </mat-card-content>
     <button mat-button color="accent" [disabled]="number.invalid" (click)="formatNumber()">Format Number</button>
 </mat-card>

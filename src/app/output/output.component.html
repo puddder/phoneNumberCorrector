@@ -1,11 +1,22 @@
-<mat-card class="outputCard">
+<mat-card class="outputCard" *ngIf="this.numberService.getNumberIsFormatted()">
     <mat-card-content>
-        <mat-form-field appearance="fill">
-            <input matInput placeholder="Country Code" [formControl]="countryCode" required>
-            <input matInput placeholder="Number" [formControl]="preNumber" required>
-            <input matInput placeholder="1548" [formControl]="mainNumber" required>
-            <input matInput placeholder="54" [formControl]="extraNumber" required>
-        </mat-form-field>
+        <form [formGroup]="numberForm">
+            <mat-form-field>
+                <input matInput placeholder="country Code" formControlName="countryCode" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="area Code" formControlName="areaCode" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="main Number" formControlName="mainNumber" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="extension" formControlName="extension" required>
+            </mat-form-field>
+        </form>
+        <div class="outputNumber">
+            <h2>{{this.getFormatNumberAsString()}}</h2>
+        </div>
     </mat-card-content>
     <button mat-button color="accent" (click)="copy()">copy</button>
 </mat-card>
